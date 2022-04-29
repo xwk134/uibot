@@ -1,4 +1,5 @@
 
+Dim objJSON = ""
 Dim strJSON = ""
 Dim arrayRet = ""
 Dim sRet = ""
@@ -7,8 +8,7 @@ arrayRet = File.DirFileOrFolder('''C:\Users\Administrator.SC-202101151411\Deskto
 For Each arr In arrayRet
 	TracePrint arr
 	jsonRet = Mage.ImageOCRText(arr,{"Pubkey":"ouJGsB4ojWLyPtcntxwpKfKA","Secret":"uMtvJt2ff32RzTHwa8qjVFHGCW8vxhoO","Url":"https://mage.uibot.com.cn"},30000)
-	strJSON = JSON.Stringify(jsonRet)
-	TracePrint strJSON
+	TracePrint jsonRet["items"][2]["content"]
 Next
 
 
