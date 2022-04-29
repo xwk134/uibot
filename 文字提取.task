@@ -41,13 +41,14 @@ For Each arr In arrayRet
 		Excel.InsertRow(objExcelWorkBook,"Sheet1","A1",["姓名","手机号"])
 		Excel.Save(objExcelWorkBook)
 		
-		Dialog.Notify("当前写入数据完成", "UiBot", 1)
+		Dialog.Notify("当前数据写入完成", "UiBot", 1)
 	Catch 
 		iRet = Dialog.MsgBox("未能打开Office。UiBot支持office2007及以上版本与Wps2016及以上版本，请检查安装后重试。","UiBot","0","1",0)
 		exit()
 		
 	End Try
 Next
+Dialog.Notify("提取信息完毕，共提取数据"&Len(arrarRet), "UiBot", 1)
 
 
 
