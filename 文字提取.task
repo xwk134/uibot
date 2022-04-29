@@ -32,10 +32,9 @@ Try
 	
 	Dialog.Notify("共提取"&识别总数&"条数据\n开始写入Excel", "UiBot", 1)
 	Excel.SetColumnWidth(objExcelWorkBook,"Sheet1","A1",120,True)
-	arrayRet = Array([2])
-	arrRet = insert(arrayRet,0,"")
-	TracePrint arrRet
-	Excel.WriteRange(objExcelWorkBook,"Sheet1","A1",arrayData)
+	Excel.SetColumnWidth(objExcelWorkBook,"Sheet1","B1",120,True)
+	Excel.WriteRange(objExcelWorkBook,"Sheet1","A1",name)
+	Excel.WriteRange(objExcelWorkBook,"Sheet1","B1",phone)
 	Excel.InsertRow(objExcelWorkBook,"Sheet1","A1",["姓名","手机号"])
 	Excel.Save(objExcelWorkBook)
 	
