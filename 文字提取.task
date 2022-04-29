@@ -23,12 +23,8 @@ For Each arr In arrayRet
 	TracePrint iRet
 	name = Left(namephone,CInt(iRet)-11)
 	TracePrint name
-	Dialog.Notify("打开Excel\n保存在UiBot安装目录", "UiBot", 1)
-	
+	Dialog.Notify("打开Excel\n保存在UiBot安装目录", "UiBot", 1)	
 	Try 
-		
-		
-		
 		Excel.WriteRange(objExcelWorkBook,"Sheet1","A1",name)
 		Excel.WriteRange(objExcelWorkBook,"Sheet1","B1",phone)
 		Excel.InsertRow(objExcelWorkBook,"Sheet1","A1",["姓名","手机号"])
