@@ -14,6 +14,7 @@ For Each arr In arrayRet
 	jsonRet = Mage.ImageOCRText(arr,{"Pubkey":"ouJGsB4ojWLyPtcntxwpKfKA","Secret":"uMtvJt2ff32RzTHwa8qjVFHGCW8vxhoO","Url":"https://mage.uibot.com.cn"},30000)
 	namephone = jsonRet["items"][2]["content"]
 	TracePrint namephone
+	Dialog.Notify(namephone, "UiBot", "0")
 	phone = Right(namephone,11)
 	TracePrint phone
 	iRet = Len(namephone)
