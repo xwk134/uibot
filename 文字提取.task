@@ -6,7 +6,7 @@ arrayRet = File.DirFileOrFolder('''C:\Users\Administrator.SC-202101151411\Deskto
 For Each arr In arrayRet
     TracePrint arr
 	jsonRet = Mage.ImageOCRText(arr,{"Pubkey":"ouJGsB4ojWLyPtcntxwpKfKA","Secret":"uMtvJt2ff32RzTHwa8qjVFHGCW8vxhoO","Url":"https://mage.uibot.com.cn"},30000)
-	TracePrint jsonRet
+	TracePrint jsonRet["content"]
 Next
 
 
