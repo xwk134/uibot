@@ -40,8 +40,10 @@ For Each arr In arrayRet
 		exit()
 		
 	End Try
+	Delay 10000
 Next
 Dialog.Notify("提取信息完毕，共提取数据"&Len(arrayRet)&"条", "UiBot", 1)
 Delay 3000
+Excel.CloseExcel(objExcelWorkBook,True)
 
 
