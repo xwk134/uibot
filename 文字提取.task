@@ -31,12 +31,12 @@ Try
 	识别总数=Len(arrayRet)
 	
 	Dialog.Notify("共提取"&识别总数&"条数据\n开始写入Excel", "UiBot", 1)
-	Excel.SetColumnWidth(objExcelWorkBook,"Sheet1","A1",120,True)
-	Excel.SetColumnWidth(objExcelWorkBook,"Sheet1","B1",120,True)
+	Excel.SetColumnWidth(objExcelWorkBook,"Sheet1","A1",20,True)
+	Excel.SetColumnWidth(objExcelWorkBook,"Sheet1","B1",40,True)
 	Excel.WriteRange(objExcelWorkBook,"Sheet1","A1",name)
 	Excel.WriteRange(objExcelWorkBook,"Sheet1","B1",phone)
 	Excel.InsertRow(objExcelWorkBook,"Sheet1","A1",["姓名","手机号"])
-	Excel.Save(objExcelWorkBook)
+	Excel.CloseExcel(objExcelWorkBook,True)
 	
 	Dialog.Notify("写入数据完成", "UiBot", "0")
 Catch 
