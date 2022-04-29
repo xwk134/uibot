@@ -13,6 +13,10 @@ For Each arr In arrayRet
 	TracePrint namephone
 	phone = Right(namephone,11)
 	TracePrint phone
+	iRet = Len(namephone)
+	TracePrint iRet
+	name = Left("",1)
+    TracePrint name
 Next
 
 
