@@ -1,5 +1,4 @@
 Dim iRet = ""
-Dim 识别总数 = ""
 Dim objExcelWorkBook = ""
 Dim arrRet = ""
 Dim arrSet = ""
@@ -13,14 +12,11 @@ Dim phone = ""
 arrayRet = File.DirFileOrFolder('''C:\Users\Administrator.SC-202101151411\Desktop\待识别图片''',"fileandfolder",{"hasPath":True})
 objExcelWorkBook = Excel.OpenExcel(@res"收货人信息.xlsx",True)
 Dialog.Notify("开始提取收货人信息，将数据写入Excel", "UiBot", 1)
-Excel.SetColumnWidth(objExcelWorkBook,"Sheet1","A1",20,True)
-Excel.SetColumnWidth(objExcelWorkBook,"Sheet1","B1",40,True)
 For Each arr In arrayRet
 	TracePrint arr
 	jsonRet = Mage.ImageOCRText(arr,{"Pubkey":"ouJGsB4ojWLyPtcntxwpKfKA","Secret":"uMtvJt2ff32RzTHwa8qjVFHGCW8vxhoO","Url":"https://mage.uibot.com.cn"},30000)
 	namephone = jsonRet["items"][2]["content"]
 	TracePrint namephone
-	Dialog.Notify(namephone, "UiBot", "0")
 	phone = Right(namephone,11)
 	TracePrint phone
 	iRet = Len(namephone)
@@ -38,14 +34,13 @@ For Each arr In arrayRet
 		Excel.InsertRow(objExcelWorkBook,"Sheet1","A1",["姓名","手机号"])
 		Excel.Save(objExcelWorkBook)
 		
-		Dialog.Notify("当前数据写入完成", "UiBot", 1)
+		Dialog.Notify(namephone&"---当前数据写入完成", "UiBot", 1)
 	Catch 
 		iRet = Dialog.MsgBox("未能打开Office。UiBot支持office2007及以上版本与Wps2016及以上版本，请检查安装后重试。","UiBot","0","1",0)
 		exit()
 		
 	End Try
 Next
-iRet = Len([])
 Dialog.Notify("提取信息完毕，共提取数据"&Len(arrayRet)&"条", "UiBot", 1)
 Delay 3000
 
