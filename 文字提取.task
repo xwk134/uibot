@@ -1,4 +1,5 @@
 Dim iRet = ""
+Dim arrSet = ""
 Dim objJSON = ""
 Dim strJSON = ""
 Dim arrayRet = ""
@@ -28,8 +29,9 @@ Try
 	
 	Dialog.Notify("共提取"&识别总数&"条数据\n开始写入Excel", "UiBot", 1)
 	Excel.SetColumnWidth(objExcelWorkBook,"Sheet1","A1",120,True)
+	arrSet = Set.ToArray(objSet)
 	Excel.WriteRange(objExcelWorkBook,"Sheet1","A1",arrayData)
-	Excel.InsertRow(objExcelWorkBook,"Sheet1","A1",["商品信息","商品详情","购买数量","商品价格","收货人","订单状态","下单时间"])
+	Excel.InsertRow(objExcelWorkBook,"Sheet1","A1",["姓名","手机号"])
 	Excel.Save(objExcelWorkBook)
 	
 	Dialog.Notify("写入数据完成", "UiBot", "0")
