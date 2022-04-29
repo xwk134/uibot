@@ -13,9 +13,6 @@ Dim phone = ""
 arrayRet = File.DirFileOrFolder('''C:\Users\Administrator.SC-202101151411\Desktop\待识别图片''',"fileandfolder",{"hasPath":True})
 objExcelWorkBook = Excel.OpenExcel(@res"收货人信息.xlsx",True)
 Dialog.Notify("开始提取收货人信息，将数据写入Excel", "UiBot", 1)
-
-
-
 Excel.SetColumnWidth(objExcelWorkBook,"Sheet1","A1",20,True)
 Excel.SetColumnWidth(objExcelWorkBook,"Sheet1","B1",40,True)
 For Each arr In arrayRet
@@ -48,7 +45,8 @@ For Each arr In arrayRet
 		
 	End Try
 Next
-Dialog.Notify("提取信息完毕，共提取数据"&Len(arrarRet), "UiBot", 1)
-
+iRet = Len([])
+Dialog.Notify("提取信息完毕，共提取数据"&Len(arrayRet)&"条", "UiBot", 1)
+Delay 3000
 
 
