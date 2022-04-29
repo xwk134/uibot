@@ -1,5 +1,12 @@
 
+Dim arrayRet = ""
+Dim sRet = ""
 Dim jsonRet = ""
-jsonRet = Mage.ImageOCRText('''C:\Users\Administrator.SC-202101151411\Desktop\待识别图片\QQ图片20220429195617.jpg''',{"Pubkey":"ouJGsB4ojWLyPtcntxwpKfKA","Secret":"uMtvJt2ff32RzTHwa8qjVFHGCW8vxhoO","Url":"https://mage.uibot.com.cn"},30000)
-TracePrint jsonRet
+arrayRet = File.DirFileOrFolder('''C:\Users\Administrator.SC-202101151411\Desktop\待识别图片''',"fileandfolder",{"hasPath":True})
+For Each arr In arrayRet
+    TracePrint arr
+	//jsonRet = Mage.ImageOCRText('''C:\Users\Administrator.SC-202101151411\Desktop\待识别图片\''&arr',{"Pubkey":"ouJGsB4ojWLyPtcntxwpKfKA","Secret":"uMtvJt2ff32RzTHwa8qjVFHGCW8vxhoO","Url":"https://mage.uibot.com.cn"},30000)
+	TracePrint jsonRet
+Next
+
 
