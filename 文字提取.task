@@ -1,4 +1,3 @@
-
 Dim iRet = ""
 Dim objJSON = ""
 Dim strJSON = ""
@@ -15,8 +14,29 @@ For Each arr In arrayRet
 	TracePrint phone
 	iRet = Len(namephone)
 	TracePrint iRet
-	name = Left("",1)
-    TracePrint name
+	name = Left(namephone,CInt(iRet)-11)
+	TracePrint name
 Next
+Dialog.Notify("打开Excel\n保存在UiBot安装目录", "UiBot", 1)
+
+Try 
+	objExcelWorkBook = Excel.OpenExcel(@res"收货人信息.xlsx",True)
+	Dialog.Notify("将数据写入Excel", "UiBot", "0")
+	
+	
+	识别总数=Len(arrayRet)
+	
+	Dialog.Notify("共提取"&识别总数&"条数据\n开始写入Excel", "UiBot", 1)
+	Excel.SetColumnWidth(objExcelWorkBook,"Sheet1","A1",120,True)
+	Excel.WriteRange(objExcelWorkBook,"Sheet1","A1",arrayData)
+	Excel.InsertRow(objExcelWorkBook,"Sheet1","A1",["商品信息","商品详情","购买数量","商品价格","收货人","订单状态","下单时间"])
+	Excel.Save(objExcelWorkBook)
+	
+	Dialog.Notify("写入数据完成", "UiBot", "0")
+Catch 
+	iRet = Dialog.MsgBox("未能打开Office。UiBot支持office2007及以上版本与Wps2016及以上版本，请检查安装后重试。","UiBot","0","1",0)
+	exit()
+	
+End Try
 
 
