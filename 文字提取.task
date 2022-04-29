@@ -1,10 +1,13 @@
 Dim iRet = ""
+Dim arrRet = ""
 Dim arrSet = ""
 Dim objJSON = ""
 Dim strJSON = ""
 Dim arrayRet = ""
 Dim sRet = ""
 Dim jsonRet = ""
+Dim name = ""
+Dim phone = ""
 arrayRet = File.DirFileOrFolder('''C:\Users\Administrator.SC-202101151411\Desktop\待识别图片''',"fileandfolder",{"hasPath":True})
 For Each arr In arrayRet
 	TracePrint arr
@@ -29,7 +32,9 @@ Try
 	
 	Dialog.Notify("共提取"&识别总数&"条数据\n开始写入Excel", "UiBot", 1)
 	Excel.SetColumnWidth(objExcelWorkBook,"Sheet1","A1",120,True)
-	arrayRet = Array([2,2],name)
+	arrayRet = Array([2,2],Null)
+	arrRet = Unshift(arrayRet,"1")
+    TracePrint arrayRet
 	Excel.WriteRange(objExcelWorkBook,"Sheet1","A1",arrayData)
 	Excel.InsertRow(objExcelWorkBook,"Sheet1","A1",["姓名","手机号"])
 	Excel.Save(objExcelWorkBook)
