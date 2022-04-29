@@ -36,7 +36,7 @@ Try
 	Excel.WriteRange(objExcelWorkBook,"Sheet1","A1",name)
 	Excel.WriteRange(objExcelWorkBook,"Sheet1","B1",phone)
 	Excel.InsertRow(objExcelWorkBook,"Sheet1","A1",["姓名","手机号"])
-	Excel.CloseExcel(objExcelWorkBook,True)
+	Excel.Save(objExcelWorkBook)
 	
 	Dialog.Notify("写入数据完成", "UiBot", "0")
 Catch 
