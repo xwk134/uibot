@@ -10,9 +10,28 @@ Dim sRet = ""
 Dim jsonRet = ""
 Dim name = ""
 Dim phone = ""
-bRet = File.FolderExists('''D:\图片识别''')
+aa = File.FolderExists('''D:\图片识别''')
+If  aa=True
+    TracePrint '图片识别文件夹已存在'
+Else
+    File.CreateFolder('''D:\图片识别''')
+    TracePrint '创建图片识别文件夹'
+End If
+bb = File.FolderExists('''D:\图片识别\待识别图片''')
+If  bb=True
+    TracePrint '图片识别文件夹已存在'
+Else
+    File.CreateFolder('''D:\图片识别''')
+    TracePrint '创建图片识别文件夹'
+End If
+cc = File.FolderExists('''D:\图片识别''')
+If  cc=True
+    TracePrint '图片识别文件夹已存在'
+Else
+    File.CreateFolder('''D:\图片识别''')
+    TracePrint '创建图片识别文件夹'
+End If
 
-File.CreateFolder('''D:\图片识别''')
 
 arrayRet = File.DirFileOrFolder('''C:\Users\Administrator.SC-202101151411\Desktop\待识别图片''',"fileandfolder",{"hasPath":True})
 objExcelWorkBook = Excel.OpenExcel(@res"收货人信息.xlsx",True)
