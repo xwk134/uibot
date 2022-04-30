@@ -33,8 +33,8 @@ Else
     Dialog.Notify("创建文件夹成功", "UiBot", 1)
 End If
 
-arrayRet = File.DirFileOrFolder('''C:\Users\Administrator.SC-202101151411\Desktop\待识别图片''',"fileandfolder",{"hasPath":True})
-objExcelWorkBook = Excel.OpenExcel(@res"收货人信息.xlsx",True)
+arrayRet = File.DirFileOrFolder('''D:\图片识别\待识别图片''',"fileandfolder",{"hasPath":True})
+objExcelWorkBook = Excel.OpenExcel('''D:\图片识别\收货人信息.xlsx''',True)
 Dialog.Notify("开始提取收货人信息，将数据写入Excel", "UiBot", 1)
 For Each arr In arrayRet
 	TracePrint arr
@@ -47,7 +47,7 @@ For Each arr In arrayRet
 	TracePrint iRet
 	name = Left(namephone,CInt(iRet)-11)
 	TracePrint name
-	Dialog.Notify("打开Excel\n保存在UiBot安装目录", "UiBot", 1)	
+	Dialog.Notify("打开Excel\n保存在D盘图片识别文件夹", "UiBot", 1)	
 	Try 
 		Excel.WriteRange(objExcelWorkBook,"Sheet1","A1",name)
 		Excel.WriteRange(objExcelWorkBook,"Sheet1","B1",phone)
@@ -55,7 +55,7 @@ For Each arr In arrayRet
 		Excel.Save(objExcelWorkBook)
 		
 		Dialog.Notify(namephone&"---当前数据写入完成", "UiBot", 1)
-		File.MoveFile(arr,'''C:\Users\Administrator.SC-202101151411\Desktop\已识别图片''',True)
+		File.MoveFile(arr,'''D:\图片识别\已识别图片''',True)
 	Catch 
 		iRet = Dialog.MsgBox("未能打开Office。UiBot支持office2007及以上版本与Wps2016及以上版本，请检查安装后重试。","UiBot","0","1",0)
 		exit()
