@@ -31,6 +31,7 @@ For Each arr In arrayRet
 		Excel.Save(objExcelWorkBook)
 		
 		Dialog.Notify(namephone&"---当前数据写入完成", "UiBot", 1)
+		File.MoveFile(arr,'''C:\Users\Administrator.SC-202101151411\Desktop\已识别图片''',True)
 	Catch 
 		iRet = Dialog.MsgBox("未能打开Office。UiBot支持office2007及以上版本与Wps2016及以上版本，请检查安装后重试。","UiBot","0","1",0)
 		exit()
