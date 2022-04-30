@@ -47,7 +47,7 @@ For Each arr In arrayRet
 	TracePrint iRet
 	name = Left(namephone,CInt(iRet)-11)
 	TracePrint name
-	Dialog.Notify("打开Excel\n保存在D盘图片识别文件夹", "UiBot", 1)	
+
 	Try 
 		Excel.WriteRange(objExcelWorkBook,"Sheet1","A1",name)
 		Excel.WriteRange(objExcelWorkBook,"Sheet1","B1",phone)
@@ -66,6 +66,8 @@ For Each arr In arrayRet
 Next
 Dialog.Notify("提取信息完毕，共提取数据"&Len(arrayRet)&"条", "UiBot", 1)
 Delay 3000
+Dialog.Notify("保存在D盘图片识别文件夹", "UiBot", 1)	
+delay 3000
 Excel.CloseExcel(objExcelWorkBook,True)
 
 
