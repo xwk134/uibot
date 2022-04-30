@@ -19,17 +19,17 @@ Else
 End If
 bb = File.FolderExists('''D:\图片识别\待识别图片''')
 If  bb=True
-    TracePrint '图片识别文件夹已存在'
+    TracePrint '待识别图片文件夹已存在'
 Else
-    File.CreateFolder('''D:\图片识别''')
-    TracePrint '创建图片识别文件夹'
+    File.CreateFolder('''D:\图片识别\待识别图片''')
+    TracePrint '创建待识别图片文件夹'
 End If
-cc = File.FolderExists('''D:\图片识别''')
+cc = File.FolderExists('''D:\图片识别\已识别图片''')
 If  cc=True
-    TracePrint '图片识别文件夹已存在'
+    TracePrint '已识别图片文件夹已存在'
 Else
-    File.CreateFolder('''D:\图片识别''')
-    TracePrint '创建图片识别文件夹'
+    File.CreateFolder('''D:\图片识别\已识别图片''')
+    TracePrint '创建已识别图片文件夹'
 End If
 
 
