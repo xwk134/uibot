@@ -1,4 +1,5 @@
 Dim iRet = ""
+Dim bRet = ""
 Dim objExcelWorkBook = ""
 Dim arrRet = ""
 Dim arrSet = ""
@@ -9,6 +10,10 @@ Dim sRet = ""
 Dim jsonRet = ""
 Dim name = ""
 Dim phone = ""
+bRet = File.FolderExists('''D:\图片识别''')
+
+File.CreateFolder('''D:\图片识别''')
+
 arrayRet = File.DirFileOrFolder('''C:\Users\Administrator.SC-202101151411\Desktop\待识别图片''',"fileandfolder",{"hasPath":True})
 objExcelWorkBook = Excel.OpenExcel(@res"收货人信息.xlsx",True)
 Dialog.Notify("开始提取收货人信息，将数据写入Excel", "UiBot", 1)
@@ -38,7 +43,7 @@ For Each arr In arrayRet
 		
 	End Try
 	Delay 10000
-	File.CreateFolder('''C:\Users''')
+	
 Next
 Dialog.Notify("提取信息完毕，共提取数据"&Len(arrayRet)&"条", "UiBot", 1)
 Delay 3000
