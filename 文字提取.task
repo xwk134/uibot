@@ -30,8 +30,8 @@ If  cc=True
 Else
     File.CreateFolder('''D:\图片识别\已识别图片''')
     TracePrint '创建已识别图片文件夹'
+    Dialog.Notify("创建文件夹成功", "UiBot", 1)
 End If
-
 
 arrayRet = File.DirFileOrFolder('''C:\Users\Administrator.SC-202101151411\Desktop\待识别图片''',"fileandfolder",{"hasPath":True})
 objExcelWorkBook = Excel.OpenExcel(@res"收货人信息.xlsx",True)
