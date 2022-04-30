@@ -12,33 +12,35 @@ Dim name = ""
 Dim phone = ""
 aa = File.FolderExists('''D:\图片识别''')
 If  aa=True
-    TracePrint '图片识别文件夹已存在'
+	TracePrint '图片识别文件夹已存在'
 Else
-    File.CreateFolder('''D:\图片识别''')
-    TracePrint '创建图片识别文件夹'
+	File.CreateFolder('''D:\图片识别''')
+	TracePrint '创建图片识别文件夹'
 End If
 bb = File.FolderExists('''D:\图片识别\待识别图片''')
 If  bb=True
-    TracePrint '待识别图片文件夹已存在'
+	TracePrint '待识别图片文件夹已存在'
 Else
-    File.CreateFolder('''D:\图片识别\待识别图片''')
-    TracePrint '创建待识别图片文件夹'
+	File.CreateFolder('''D:\图片识别\待识别图片''')
+	TracePrint '创建待识别图片文件夹'
 End If
 cc = File.FolderExists('''D:\图片识别\已识别图片''')
 If  cc=True
-    TracePrint '已识别图片文件夹已存在'
+	TracePrint '已识别图片文件夹已存在'
 Else
-    File.CreateFolder('''D:\图片识别\已识别图片''')
-    TracePrint '创建已识别图片文件夹'
-    Dialog.Notify("创建文件夹成功", "UiBot", 1)
+	File.CreateFolder('''D:\图片识别\已识别图片''')
+	TracePrint '创建已识别图片文件夹'
+	Dialog.Notify("创建文件夹成功", "UiBot", 1)
 End If
+key = Dialog.InputBox("","模型pubkey","",False)
+secret = Dialog.InputBox("","模型secret","",False)
 
 arrayRet = File.DirFileOrFolder('''D:\图片识别\待识别图片''',"fileandfolder",{"hasPath":True})
 objExcelWorkBook = Excel.OpenExcel('''D:\图片识别\收货人信息.xlsx''',True)
 Dialog.Notify("开始提取收货人信息，将数据写入Excel", "UiBot", 1)
 For Each arr In arrayRet
 	TracePrint arr
-	jsonRet = Mage.ImageOCRText(arr,{"Pubkey":"ouJGsB4ojWLyPtcntxwpKfKA","Secret":"uMtvJt2ff32RzTHwa8qjVFHGCW8vxhoO","Url":"https://mage.uibot.com.cn"},30000)
+	jsonRet = Mage.ImageOCRText(arr,{"Pubkey":key,"Secret":secret,"Url":"https://mage.uibot.com.cn"},30000)
 	namephone = jsonRet["items"][2]["content"]
 	TracePrint namephone
 	phone = Right(namephone,11)
@@ -47,7 +49,7 @@ For Each arr In arrayRet
 	TracePrint iRet
 	name = Left(namephone,CInt(iRet)-11)
 	TracePrint name
-
+	
 	Try 
 		Excel.WriteRange(objExcelWorkBook,"Sheet1","A1",name)
 		Excel.WriteRange(objExcelWorkBook,"Sheet1","B1",phone)
