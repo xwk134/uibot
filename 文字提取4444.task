@@ -67,8 +67,9 @@ For Each arr In arrayRet
 		exit()
 		
 	End Try
-	Delay 10000
 	
+	Dialog.Notify("等待10秒再次识别，可最小化Excel窗口", "UiBot", 1)
+	Delay 10000
 Next
 Dialog.Notify("提取信息完毕，共提取数据"&Len(arrayRet)&"条", "UiBot", 1)
 Delay 3000
